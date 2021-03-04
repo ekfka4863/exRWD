@@ -1,3 +1,5 @@
+@import url(./animation.css);
+
 ::-moz-selection {
     background: #233d84;
     color: #ffffff;
@@ -195,17 +197,12 @@ a img {
     display: flex;
     /* 행방향 이면서 줄바꿈 허용! */
     flex-flow: row wrap;  
-
-    /* grid 활용시 */
-    /* display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    grid-row-gap: 20px; */
 }
 .ediya-menu__item{
     width: 100%;
     margin-bottom: 20px;
     border: 1px solid #e0e0e0;
+    position: relative;
 }
 .ediya-menu__item:last-child{
     margin-bottom: 0;
@@ -222,8 +219,6 @@ a img {
 .ediya-menu__item a:hover img, .ediya-menu__item:focus img{
     /* a태그에 호버랑 포커스를 주면, 그때, img가 크기가 원상복귀! scale(1)로! */
     transform: scale(1);
-    /* 부드럽게 크기의 변화를 주자! */
-    transition: all 0.4s;
 }
 .ediya-menu__item figure{
     margin: 0;
@@ -232,6 +227,8 @@ a img {
 .ediya-menu__item img{
     /* 원래 이미지 크기보다 작게 만들기! */
     transform: scale(0.85);
+    /* 부드럽게 크기의 변화를 주자! */
+    transition: all 0.4s;
 
     /* 부모의 크기에 따라 반응하면서 크기가 달라지게 하기! */
     max-width: 100%;
@@ -241,6 +238,88 @@ a img {
     padding: 1em 0;
     /* display: block; */
     /* text-align: center; */
+}
+/* 반응형일 때 중요한 것은 부모의 크기에 따라 자식 요쇼가 너비가 바뀔수 있도록 자식의 크기를 제한하지 말아야한다! */
+
+.ediya-menu__item--detail{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    order: 1px solid #e0e0e0;
+    padding: 30px 20px 20px;
+    background: rgba(255, 255, 255, 0.6);
+    transition: all 0.6s ease;
+    /* background-color: yellow; */
+    display:flex;
+    flex-flow: column wrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.ediya-menu__item--detail.is-active {
+    opacity: 1;
+}
+.ediya-menu__item--detail p{
+    /* width: 100%; */
+    flex-grow: 1;
+    margin: 0;
+}
+.ediya-menu__item--multi-column{
+    column-gap: 20px;
+    column-rule: 1px solid #999;
+}
+.ediya-menu__item--name {
+    display: block;
+    border-bottom: solid 2px #202023;
+    padding-bottom: 1em;
+    font-weight: 400;
+    font-size: 18px;
+    color: #202022;
+    width: 100%;
+}
+
+.ediya-menu__item--name [lang="en"] {
+    font-size: 14px;
+    color: #737373;
+}
+.is-close-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 9px 15px;
+    font-size: 24px;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+.ediya-menu__item--multi-column.is-2 {
+    column-count: 2;
+}
+.ediya-menu__item--detail dl {
+    /* 라인 하이트를 1.6으로 정해주고, dl에 이것을 정해준 이유는 
+    자식 요소인 dt와 dd에 상속시키려고...! */
+    line-height: 1.6;
+    font-size: 13px;
+    /* multicolumn을 사용할 때 margin을 포함하고 있기 때문에 이것을 없애줘야한다! */
+    margin: 0;
+}
+
+.ediya-menu__item--detail dt {
+    float: left;
+    width: 40%;
+    margin-left: 10%;
+}
+
+.ediya-menu__item--detail dd {
+    float: right;
+    width: 40%;
+    margin-left: 0;
+}
+
+/* 접근성 측면에서 focus도 넣어주기~ */
+.is-close-panel:hover, .is-close-panel:focus{
+    background: #f3f3f3;
 }
 
 /* (크기가) medium 이상 디바이스 */
@@ -252,7 +331,8 @@ a img {
         /* background-color: pink; */
 
         /* grid 사용시! 뷰포트를 크게 늘렸을 때, 컬럼이 2단이 되고 싶게 하면... 아래와 같이! */
-        /* grid-template-columns: 1fr 1fr; */
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 20px;
     }
     /* 우리가 아는 방식은 아래와 같이~ */
     /* .ediya-menu__item{
@@ -269,6 +349,11 @@ a img {
     .ediya-menu{
         justify-content: space-between;
         width: 50%;
+        /* grid 활용시 */
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-row-gap: 20px;
     }
     .ediya-menu__item{
         width: calc(50%-10px);
