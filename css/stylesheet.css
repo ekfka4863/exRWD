@@ -1,0 +1,271 @@
+::-moz-selection {
+    background: #233d84;
+    color: #ffffff;
+}
+
+::selection {
+    background: #233d84;
+    color: #ffffff;
+}
+
+body * {
+    -webkit-tap-highlight-color: rgba(255, 255, 200, 0.3);
+    tap-highlight-color: rgba(255, 255, 200, 0.3);
+}
+
+/* 만약에 div.container가 있으면 바디 대신 컨테이너에 아래와 같이 CSS 설정해주면 됌! */
+body {
+    margin: 0 auto;
+    max-width: 840px;
+    /* 바디가 화면에 꽉 차게 만들겠다는 의미의 코드! 아래와 같이! */
+    min-height: 100vh;
+}
+/* 모든 이미지가 앵커 태그 안에 포함되어 있을 때, 수직 정렬을 middle에 맞추겠다는 의미! */
+a img {
+    vertical-align: middle;
+}
+
+/* -------------------------------------------- */
+/* 공통 클래스 */
+.respons{
+    /* 반응형에서 자신의 원본 크기보다 커지지 않게 하려면...? */
+    max-width: 100%;
+    height: auto;
+}
+/* 비트맵은 원본 이상 커지면 화질이 깨지고, svg(벡터 이미지)는 원본 이상 커져도 되는 이미지!! */
+.respons-svg{
+    width: 100%;
+    height: auto;
+}
+.button {
+    cursor: pointer;
+    border: none;
+}
+.a11y-hidden {
+    overflow: hidden;
+    position: absolute !important;
+    /* top: -9999em; */
+    /* 위에꺼 대신에 아래꺼 코드사용! 50%는 정가운데로 클리핑 처리가 된다는 것! 사방으로 50%씩 클리핑이되서 결국 보이지 않게된다고 하심! 
+    이거 원리는 더 찾아보기!! */
+    clip-path: inset(50%);
+    clip: rect(0, 0, 0, 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+}
+.reset-list {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+/* -------------------------------------------- */
+/* 헤더 디자인 */
+.app-header{
+    background: rgba(255, 255, 255, 0.4);
+    position: fixed;
+    /* width:100%; 해도 되지만... 아래와 같이, 왼쪽 좌표 0, 오른쪽 좌표 0으로 지정하면, width를 100%로 지정한 효과가 나타난다! */
+    left: 0;
+    right: 0;
+    /* 만약에 크로스브라우징이 걱정 된다면 아래와 같은 코드를 추가! */
+    width: 100vw;
+    /* 실선의 효과를 주기~ 아래와 같이! */
+    border-bottom: 1px solid #e0e0e0;
+    /* 햄버거 버튼이랑 로고랑 각각 오른쪽 그리고 왼쪽으로 배열하고 싶으면...? 아래와 같이! */
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 로고 */
+.brand{
+    /* background-color: pink; */
+    margin: 0;
+    /* width: 215/840; --> 위에 View 누르고 -> command palette -> math -> 클릭!*/
+    /* width: 25.595238095238093%;  */
+}
+.brand a {
+    /* background-color: lime; */
+    display: block;
+    width: 225px;
+    padding: 15px;
+}
+
+/* 메인 메뉴 열기 버튼 */
+.is-open-menu {
+    /* -webkit-user-select: none; */
+    /* -moz-user-select: none; */
+    /* -ms-user-select: none; */
+    user-select: none;
+    padding: 20px;
+    background: #ffffff;
+    /* 버튼이 제일 위로 가게끔...! */
+    /* order: -1; */
+    /* transition: all 0.3s ease; */
+}
+/* .is-open-menud안에 있는 ir에다가 적용 시킬 스타일은 아래와 같다! */
+.is-open-menu .ir {
+    display: block;
+    /* 아까 버튼에 이미 커서: 포인터를 했지만 이거는 스팬요소! 이것도 커서가 가게끔 여기다가도 설정! */
+    cursor: pointer;
+    width: 26px;
+    height: 22px;
+    /* 아래 50%는 원래는 두번 들어가서 x, y축을 전부 나타내야 하지만, 동일한 값일 경우 하나만 적어도 무방! */
+    background: url(../images/navigation-button.gif) no-repeat 50%;
+}
+
+
+/* 내비게이션 디자인 */
+.app-navigation {
+    /* 화면 전체를 커버링 할 수 있는 방법! 아래의 5개 코드 활용! */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* background-color: yellow; */
+
+    display: flex;
+    /* 원래 플렉스는 줄바꿈을 허용하지 않는다. 하지만 줄바꿈을 허용하고 싶으면 wrap을 정해주면 된다! */
+    flex-flow: row wrap;
+    /* 버튼이 제일 위로 가게끔...! 아래 세줄 정확히 더 알아보기! */
+    justify-content: flex-end;
+    align-items: flex-start;
+    align-content: flex-start;
+
+    overflow: hidden; 
+    z-index: 1000; 
+    /* padding-top: 60px; --> 플렉스로 처리 안하면 이거 필요! 60px 만큼 밀어낼 수 있게!!*/
+    background: hsla(225, 57%, 10%, 0.9);
+    color: #fff;
+    /* 스르륵 열리는 효과를 주는 것이 아래있는 transition! */
+    transition: all 0.4s cubic-bezier(0.66, -0.01, 0.3, 0.99);
+    /* transform 이랑 backdrop-filter --> 더 알아보기! */
+    transform: translateX(105vw);
+    backdrop-filter: blur(2px);
+}
+/* 자바스크립트의 도움을 받아... 아래와 같은 코드를 작성... :) */
+/* 이런 interaction UI를 만드려면 DOM을 배워야함! JS말고도 DOM! */
+.app-navigation.is-active {
+    transform: translateX(0);
+}
+.app-navigation ul{
+    /* background-color: skyblue; */
+    width: 100%;
+    list-style: none;
+    margin: 0;
+}
+.app-navigation li {
+    border-bottom: 1px solid hsla(225, 57%, 30%, 0.5);
+}
+
+.app-navigation a {
+    /* a의 영역이 넓어지게~ 성격을 블록요소로 바꾸기!*/
+    display: block;
+    padding: 1em;
+    transition: all 0.4s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.app-navigation a:hover,
+.app-navigation a:focus {
+    background: #2e437c;
+}
+.is-close-menu {
+    order: -1;
+    padding: 20px;
+    background: transparent;
+    color: #fff;
+    font-weight: 100;
+    font-size: 40px;
+    line-height: 0.5;
+    transition: all 0.4s ease;
+}
+
+
+/* 메인 콘텐즈 - 이디야 추천 음료 */
+.app-main{
+    /* header가 위에 떠있으니까 위에만 패딩 좀 더 주기! */
+    padding: 70px 20px 20px 20px;
+}
+.ediya-menu{
+    display: flex;
+    /* 행방향 이면서 줄바꿈 허용! */
+    flex-flow: row wrap;  
+}
+.ediya-menu__item{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.ediya-menu__item:last-child{
+    margin-bottom: 0;
+}
+/* .ediya-menu__item:nth-child(n+2){
+    margin-bottom: 0;
+} */
+.ediya-menu__item a{
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    background-color: skyblue;
+}
+.ediya-menu__item a:hover img, .ediya-menu__item:focus img{
+    /* a태그에 호버랑 포커스를 주면, 그때, img가 크기가 원상복귀! scale(1)로! */
+    transform: scale(1);
+    /* 부드럽게 크기의 변화를 주자! */
+    transition: all 0.4s;
+}
+.ediya-menu__item figure{
+    margin: 0;
+    text-align: center;
+}
+.ediya-menu__item img{
+    /* 원래 이미지 크기보다 작게 만들기! */
+    transform: scale(0.85);
+    /* 부모의 크기에 따라 반응하면서 크기가 달라지게 하기! */
+    max-width: 100%;
+    height: auto;
+}
+.ediya-menu__item figcaption{
+    padding: 1em 0;
+    /* display: block; */
+    /* text-align: center; */
+}
+
+/* (크기가) medium 이상 디바이스 */
+@media screen and (min-width: 720px){
+    .ediya-menu{
+        background-color: pink;
+    }
+    /* 우리가 아는 방식은 아래와 같이~ */
+    /* .ediya-menu__item{
+        width: 50%;
+        box-sizing: border-box;
+        padding-right: 10px;
+    }
+    .ediya-menu__item:nth-child(even){
+        padding-left: 10px;
+        padding-right: 0;
+    } */
+
+    /* 근데 위와 같이 안할 것! */
+    .ediya-menu{
+        justify-content: space-between;
+    }
+    .ediya-menu__item{
+        width: 50%;
+        width: calc(50%-10px);
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
+    .ediya-menu__item:last-child(-n+2){
+        margin-top: 0;
+    }
+}
+
+
+/* figure > img:hover{
+    max-width: 410px;
+    height: auto;
+} */
