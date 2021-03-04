@@ -1,0 +1,78 @@
+::-moz-selection {
+    background: #233d84;
+    color: #ffffff;
+}
+
+::selection {
+    background: #233d84;
+    color: #ffffff;
+}
+
+body * {
+    -webkit-tap-highlight-color: rgba(255, 255, 200, 0.3);
+    tap-highlight-color: rgba(255, 255, 200, 0.3);
+}
+
+/* 만약에 div.container가 있으면 바디 대신 컨테이너에 아래와 같이 CSS 설정해주면 됌! */
+body {
+    margin: 0 auto;
+    max-width: 840px;
+    /* 바디가 화면에 꽉 차게 만들겠다는 의미의 코드! 아래와 같이! */
+    min-height: 100vh;
+}
+nav a {
+    color: inherit;
+    text-decoration: none;
+}
+/* 모든 이미지가 앵커 태그 안에 포함되어 있을 때, 수직 정렬을 middle에 맞추겠다는 의미! */
+a img {
+    vertical-align: middle;
+}
+
+/* -------------------------------------------- */
+/* 공통 클래스 */
+.respons{
+    /* 반응형에서 자신의 원본 크기보다 커지지 않게 하려면...? */
+    max-width: 100%;
+    height: auto;
+}
+.respons-svg{
+    /* 비트맵은 원본 이상 커지면 화질이 깨지고, svg(벡터 이미지)는 원본 이상 커져도 되는 이미지!! */
+    max-width: 100%;
+    height: auto;
+}
+/* -------------------------------------------- */
+/* 헤더 디자인 */
+.app-header{
+    /* background-color: yellow; */
+    position: fixed;
+    /* width:100%; 해도 되지만... 아래와 같이, 왼쪽 좌표 0, 오른쪽 좌표 0으로 지정하면, width를 100%로 지정한 효과가 나타난다! */
+    left: 0;
+    right: 0;
+    /* 만약에 크로스브라우징이 걱정 된다면 아래와 같은 코드를 추가! */
+    width: 100vw;
+    /* 실선의 효과를 주기~ 아래와 같이! */
+    border-bottom: 1px solid #e0e0e0;
+    /* 햄버거 버튼이랑 로고랑 각각 오른쪽 그리고 왼쪽으로 배열하고 싶으면...? 아래와 같이! */
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 로고 */
+.brand{
+    background-color: pink;
+    margin: 0;
+    /* width: 215/840; --> 위에 View 누르고 -> command palette -> math -> 클릭!*/
+    width: 0.25595238095238093%; 
+}
+/* .brand img{
+    width: 100%;
+} */
+.brand a {
+    display: block;
+    /* padding: 25/16; -> math -> click! */
+    padding: 0.5em 1em;
+}
+.brand a img {
+    p
+}

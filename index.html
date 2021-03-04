@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- 반응형에서 아주 중요한 코드! 아래와 같음! content에 첫번째 값은 기기 너비에 맞게 ... 너비를 맞춰라~
+        그리고 두번째 값은 초기비율은 1비율이여라! 이런 말! -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이디야 커피 - RWD</title>
+    <link rel="stylesheet" href="./css/prac.css">
+</head>
+
+<body>
+    <!-- 바디 안에를 바로 div.container로 묶어줘도 좋다고 하심! 강사님께서! -->
+    <div class="app-header" role="banner">
+        <h1 class="brand">
+            <a href="https://www.ediya.com/" target="_blank">
+                <!-- img class="respons" 
+                    -> 이미지를 반응형으로... 부모의 요소 크기가 늘었다 줄었다에 따라 같이 할거란 의미의 클래스!! -->
+                <img class="respons" src="./images/ediya-logo.gif" alt="EDIYA COFFEE" />
+                <!-- <img class="respons" src="./images/multicampus.svg" alt="EDIYA COFFEE" /> -->
+            </a>
+        </h1>
+        <div class="app-main" role="main"></div>
+        <div class="app-footer a11y-hidden" role="contentinfo"></div>
+        <button type="button" class="button is-open-menu" title="메뉴 열기" aria-label="메뉴 열기">
+            <!-- span class="ir" 로 배경이미지 깔아서 IR기법 사용하겠단 의미!  -->
+            <span class="ir"></span>
+        </button>
+        <!-- 단락을 마우스로 선택해보세요! -->
+        <nav hidden class="app-navigation">
+            <h2 class="a11y-hidden">메인 메뉴</h2>
+            <ul class="reset-list">
+                <li><a href="#">메뉴</a></li>
+                <li><a href="#">이디야멤버스</a></li>
+                <li><a href="#">이디야커피랩</a></li>
+                <li><a href="#">이디야컬쳐랩</a></li>
+                <li><a href="#">공지사항</a></li>
+                <li><a href="#">매장찾기</a></li>
+            </ul>
+            <button type="button" class="button is-close-menu" title="메뉴 닫기" aria-label="메뉴 닫기">
+                <span class="close" aria-hidden="true">×</span>
+            </button>
+        </nav>
+    </div>
+</body>
+
+</html>
