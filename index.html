@@ -8,7 +8,10 @@
         그리고 두번째 값은 초기비율은 1비율이여라! 이런 말! -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>이디야 커피 - RWD</title>
-    <link rel="stylesheet" href="./css/prac.css">
+    <link rel="stylesheet" href="./css/stylesheet.css">
+    <!-- defer -> 더 알아보기! -->
+    <script src="./js/helper.js" defer></script>
+    <script src="./js/index.js" defer></script>
 </head>
 
 <body>
@@ -22,17 +25,15 @@
                 <!-- <img class="respons" src="./images/multicampus.svg" alt="EDIYA COFFEE" /> -->
             </a>
         </h1>
-        <div class="app-main" role="main"></div>
-        <div class="app-footer a11y-hidden" role="contentinfo"></div>
         <button type="button" class="button is-open-menu" title="메뉴 열기" aria-label="메뉴 열기">
             <!-- span class="ir" 로 배경이미지 깔아서 IR기법 사용하겠단 의미!  -->
             <span class="ir"></span>
         </button>
-        <!-- 단락을 마우스로 선택해보세요! -->
-        <nav hidden class="app-navigation">
+        <div role="navigation" class="app-navigation">
             <h2 class="a11y-hidden">메인 메뉴</h2>
+            <!-- reset list라는 공통 모듈로 기본적으로 리스트가 갖는 스타일을 없애주기! -->
             <ul class="reset-list">
-                <li><a href="#">메뉴</a></li>
+                <li><a href="#">이디야 추천메뉴</a></li>
                 <li><a href="#">이디야멤버스</a></li>
                 <li><a href="#">이디야커피랩</a></li>
                 <li><a href="#">이디야컬쳐랩</a></li>
@@ -40,9 +41,19 @@
                 <li><a href="#">매장찾기</a></li>
             </ul>
             <button type="button" class="button is-close-menu" title="메뉴 닫기" aria-label="메뉴 닫기">
+                <!-- aria-hidden="true"로 이 버튼을 "곱하기 버튼"이라는 식으로 읽지 않게 해주는 속성! -->
                 <span class="close" aria-hidden="true">×</span>
             </button>
-        </nav>
+        <div class="app-main" role="main"></div>
+        <div class="app-footer a11y-hidden" role="contentinfo">
+            <address>
+                <span>서울특별시 강남구 논현로 636 이디야 빌딩(서울특별시 강남구 논현동 221-17)</span>
+                <span>TEL : 02-543-6467</span>
+            </address>
+            <small class="copyright">&copy; 2017 EDIYA COFFEE COMPANY. ALL RIGHTS RESERVED.</small>
+        </div>
+        </div>
+        </div>
     </div>
 </body>
 
